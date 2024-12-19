@@ -1,0 +1,35 @@
+services:
+  web:
+    build:
+      context: ./docker/web
+      dockerfile: Dockerfile
+    ports:
+      - "8000:80"
+    volumes:
+      - ./src:/var/www/html
+      - ./docker/web/:/etc/nginx/conf.d
+    depends_on:
+      - app
+
+  app:
+    build:
+      context: ./docker/app
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/var/www/html
+
+  db:
+    image: mysql:latest
+    ports:
+      - 3306:3306
+    volumes:
+      - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
+      - db-store:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: youtube_clone
+      MYSQL_USER: phper
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: root
+  
+volumes:
+  db-store:
