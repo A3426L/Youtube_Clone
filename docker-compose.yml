@@ -26,10 +26,10 @@ services:
       - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
       - db-store:/var/lib/mysql
     environment:
-      MYSQL_DATABASE: youtube_clone
-      MYSQL_USER: phper
-      MYSQL_PASSWORD: password
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
   
 volumes:
   db-store:
