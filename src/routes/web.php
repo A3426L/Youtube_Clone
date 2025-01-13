@@ -10,7 +10,7 @@ Route::get('/', function () {
 });
 
 Route::get('/tests/home',[TestController::class,'home']);
-Route::get('/tests/upload',[TestController::class,'upload']);
+Route::post('/tests/upload',[TestController::class,'upload']);
 
 Route::get('/auth/redirect', [GoogleLoginController::class, 'getGoogleAuth']);
 Route::get('/auth/callback', [GoogleLoginController::class, 'authGoogleCallback']);

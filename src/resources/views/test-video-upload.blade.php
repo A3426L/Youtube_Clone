@@ -11,7 +11,7 @@
 </head>
 <body>
     <h1>動画アップロード</h1>
-    <form action="/upload-video" method="POST" enctype="multipart/form-data">
+    <form action="/tests/upload" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="file" name="video" accept="video/*">
         <button type="submit">アップロード</button>
