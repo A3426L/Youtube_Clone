@@ -11,6 +11,17 @@
 </head>
 <body>
     <h1>動画アップロード</h1>
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <form action="/tests/upload" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="file" name="video" accept="video/*">

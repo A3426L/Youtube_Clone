@@ -4,5 +4,7 @@ RUN apt-get update && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* && \
   docker-php-ext-install intl pdo_mysql zip bcmath
+
+COPY ./php.ini /usr/local/etc/php/php.ini
     
 COPY --from=composer /usr/bin/composer /usr/bin/composer

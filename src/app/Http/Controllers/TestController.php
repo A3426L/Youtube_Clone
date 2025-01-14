@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class TestController extends Controller
 {
@@ -11,14 +12,18 @@ class TestController extends Controller
     }
 
     function upload(Request $request){
-        try{
-            $request->validate([
-                'video' => 'required|mimes:mp4,avi,mov|max:10240'
-            ]);
-        }catch (validationException $e){
-            dd("a");
-            return redirect('/tests/home')->with('error',$e->errors());
-        }
+
+        // dd($request->all());
+
+        // $validator = Validator::make($request->all(), [
+        //     'video' => 'required|mimetypes:video/mp4,video/avi,video/quicktime|max:10240'
+        // ]);
+        
+        // if ($validator->fails()) {
+        //     dd($validator->errors()->toArray()); // エラーを手動で取得して処理
+        // }
+        $video = $request->file('video');
+
 
         
 
