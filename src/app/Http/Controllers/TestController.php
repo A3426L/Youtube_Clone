@@ -22,6 +22,7 @@ class TestController extends Controller
         // if ($validator->fails()) {
         //     dd($validator->errors()->toArray()); // エラーを手動で取得して処理
         // }
+        $video = $request->file('video');
 
 
         
