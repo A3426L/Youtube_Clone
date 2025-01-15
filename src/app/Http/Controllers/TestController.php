@@ -13,23 +13,19 @@ class TestController extends Controller
 
     function upload(Request $request){
 
-        // dd($request->all());
 
-        // $validator = Validator::make($request->all(), [
-        //     'video' => 'required|mimetypes:video/mp4,video/avi,video/quicktime|max:10240'
-        // ]);
+        $validator = Validator::make($request->all(), [
+            'video' => 'required|mimetypes:video/mp4,video/avi,video/quicktime|max:10240'
+        ]);
         
-        // if ($validator->fails()) {
-        //     dd($validator->errors()->toArray()); // エラーを手動で取得して処理
-        // }
-        $video = $request->file('video');
+        if ($validator->fails()) {
+            dd($validator->errors()->toArray());
+        }
 
 
         
 
         $path = $request->file('video')->store('videos','pubilc');
-
-        dd($path);
 
         //dbへ保存
 
