@@ -17,15 +17,11 @@ class TestController extends Controller
         $validator = Validator::make($request->all(), [
             'video' => 'required|mimetypes:video/mp4,video/avi,video/quicktime|max:10240'
         ]);
-        
-        if ($validator->fails()) {
-            dd($validator->errors()->toArray());
-        }
 
+        $video = $request->file('video');
 
-        
+        $storeVideo = $video->store('public/videos');
 
-        $path = $request->file('video')->store('videos','pubilc');
 
         //dbへ保存
 
