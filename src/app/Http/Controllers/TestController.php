@@ -18,6 +18,7 @@ class TestController extends Controller
         ]);
         $video = $request->file('video');
         $storeVideo = $video->storeAs('/videos', $video->hashName(),'public');
+        dd($storeVideo);
 
 
         return view('/test-video-upload',compact('storeVideo'));

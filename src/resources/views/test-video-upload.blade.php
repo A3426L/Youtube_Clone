@@ -28,9 +28,11 @@
         <button type="submit">アップロード</button>
     </form>
 
-    @if ($storeVideo)
+    @if (!empty($storeVideo))
         <p>{{ $storeVideo }}</p>
         <video src="{{ asset('storage/videos/85Dg9aa2OwpQqExR45dptlCm4BKueeVnZNAUnjP8.mp4')}}" controls></video>
+    @else
+        <p>動画はアップロードされていません</p>
     @endif
 </body>
 </html>
