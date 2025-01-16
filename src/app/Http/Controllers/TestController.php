@@ -13,19 +13,14 @@ class TestController extends Controller
 
     function upload(Request $request){
 
-
         $validator = Validator::make($request->all(), [
             'video' => 'required|mimetypes:video/mp4,video/avi,video/quicktime|max:10240'
         ]);
-
         $video = $request->file('video');
+        $storeVideo = $video->storeAs('/videos', $video->hashName(),'public');
 
-        $storeVideo = $video->store('public/videos');
 
-
-        //dbへ保存
-
-        return view('welcome');
+        return view('/test-video-upload',compact('storeVideo'));
 
 
     }
