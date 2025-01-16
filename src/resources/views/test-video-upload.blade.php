@@ -27,5 +27,10 @@
         <input type="file" name="video" accept="video/*">
         <button type="submit">アップロード</button>
     </form>
+
+    @if ($storeVideo)
+        <p>{{ $storeVideo }}</p>
+        <video src="{{ asset('storage/videos/85Dg9aa2OwpQqExR45dptlCm4BKueeVnZNAUnjP8.mp4')}}" controls></video>
+    @endif
 </body>
 </html>
