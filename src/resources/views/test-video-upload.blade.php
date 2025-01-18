@@ -24,6 +24,10 @@
 
     <form action="/tests/upload" method="POST" enctype="multipart/form-data">
         @csrf
+        <input type="text" name="title" placeholder="タイトル">
+        <input type="text" name="description" placeholder="説明">
+        <input type="file" name="thumbnail" accept="image/*">
+        <input type="text" name="user_id" placeholder="ユーザーID">
         <input type="file" name="video" accept="video/*">
         <button type="submit">アップロード</button>
     </form>
