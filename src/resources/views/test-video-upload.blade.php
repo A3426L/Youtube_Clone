@@ -24,13 +24,17 @@
 
     <form action="/tests/upload" method="POST" enctype="multipart/form-data">
         @csrf
+        <input type="text" name="title" placeholder="タイトル">
+        <input type="text" name="description" placeholder="説明">
+        <input type="file" name="thumbnail" accept="image/*">
+        <input type="text" name="user_id" placeholder="ユーザーID">
         <input type="file" name="video" accept="video/*">
         <button type="submit">アップロード</button>
     </form>
 
     @if (!empty($storeVideo))
         <p>{{ $storeVideo }}</p>
-        <video src="{{ asset('storage/videos/85Dg9aa2OwpQqExR45dptlCm4BKueeVnZNAUnjP8.mp4')}}" controls></video>
+        <video src="{{ asset('storage/'.$storeVideo)}}" controls></video>
     @else
         <p>動画はアップロードされていません</p>
     @endif
