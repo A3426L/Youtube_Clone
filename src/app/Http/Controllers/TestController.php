@@ -27,9 +27,6 @@ class TestController extends Controller
         $soreThumbnail = $thumbnail->storeAs('/thumbnails', $thumbnail->hashName(),'public');
         $storeVideo = $video->storeAs('/videos', $video->hashName(),'public');
 
-        
-
-
         return view('/test-video-upload',compact('storeVideo'));
 
 
