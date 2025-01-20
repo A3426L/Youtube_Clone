@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Movie;
 
 class TestController extends Controller
 {
@@ -24,8 +25,17 @@ class TestController extends Controller
         $description = $request->description;
         $thumbnail = $request->file('thumbnail');
         $video = $request->file('video');
-        $soreThumbnail = $thumbnail->storeAs('/thumbnails', $thumbnail->hashName(),'public');
+        $user_id = $request->user_id;
+        $storeThumbnail = $thumbnail->storeAs('/thumbnails', $thumbnail->hashName(),'public');
         $storeVideo = $video->storeAs('/videos', $video->hashName(),'public');
+
+        $video = new Movie();
+        $video->title = $title;
+        $video->description = $description;
+        $video->thumbnail_path = $storeThumbnail;
+        $video->file_path = $storeVideo;
+        $video->user_id = $user_id;
+        $video->save();
 
         return view('/test-video-upload',compact('storeVideo'));
 
