@@ -24,6 +24,7 @@ class GoogleLoginController extends Controller
             'email_verified_at' => now(),
             'name' => $googleUser->name,
             'password' => bcrypt('password'),
+            'avatar_url' => $googleUser->avatar,
             'google_id' => $googleUser->getId()
         ]);
         Auth::login($user, true);
