@@ -12,6 +12,14 @@
 <body>
     <h1>動画アップロード</h1>
 
+    @if (Auth::check())
+        <p>ログイン中のユーザー: {{ Auth::user()->name }}</p>
+        <p>メールアドレス: {{ Auth::user()->email }}</p>
+        <img src="{{ Auth::user()->avatar_url }}" alt="">
+    @else
+        <p>ログインしていません。</p>
+    @endif
+
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
