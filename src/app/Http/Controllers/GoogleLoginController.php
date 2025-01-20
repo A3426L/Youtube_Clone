@@ -22,9 +22,11 @@ class GoogleLoginController extends Controller
             'email' => $googleUser->email
         ], [
             'email_verified_at' => now(),
+            'name' => $googleUser->name,
+            'password' => bcrypt('password'),
             'google_id' => $googleUser->getId()
         ]);
         Auth::login($user, true);
-        return redirect('/home');
+        return redirect('/tests/home');
     }
 }

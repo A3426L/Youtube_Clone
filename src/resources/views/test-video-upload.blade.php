@@ -11,6 +11,13 @@
 </head>
 <body>
     <h1>動画アップロード</h1>
+    
+    @if (Auth::check())
+        <p>ログイン中のユーザー: {{ Auth::user()->name }}</p>
+        <p>メールアドレス: {{ Auth::user()->email }}</p>
+    @else
+        <p>ログインしていません。</p>
+    @endif
 
     @if ($errors->any())
         <div class="alert alert-danger">
