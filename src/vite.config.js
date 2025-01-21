@@ -1,11 +1,21 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
+import react from "@vitejs/plugin-react";
 
 export default defineConfig({
+    server: {            
+        host: true,
+        cors: {
+            origin: 'http://localhost:8000', // Laravel のアプリケーションを許可
+            methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+            allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept'],
+        },
+    },
     plugins: [
         laravel({
-            input: ['resources/css/app.css', 'resources/js/app.js'],
+            input: ['resources/css/app.css', 'resources/js/app.jsx'],
             refresh: true,
         }),
+        react(),
     ],
 });
