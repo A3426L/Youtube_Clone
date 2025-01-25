@@ -8,14 +8,14 @@ export default defineConfig({
     server: {            
         host: true,
         cors: {
-            origin: 'http://localhost:8000', // Laravel のアプリケーションを許可
+            origin: 'http://localhost:8000',
             methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
             allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept'],
         },
     },
     plugins: [
         laravel({
-            input: ['resources/css/app.css', 'resources/js/app.jsx'],
+            input: ['resources/css/app.css', 'resources/js/app.tsx'],
             refresh: true,
         }),
         react(),
